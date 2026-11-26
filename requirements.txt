@@ -1,0 +1,7 @@
+datasets>=5.0
+transformers>=5.17
+torch>=2.14
+chromadb>=1.5
+numpy>=2.5
+pillow>=12.3
+
