@@ -1,52 +1,57 @@
-# CS 594: Vector Databases — Programming Project
+# Pathology RAG with PLIP + Vector DB
 
-**University of Illinois Chicago | Fall 2026**
+## Team Information
 
-**Instructor:** A. Asudeh
+- **Aryan Dalvi**: sole contributor (all code, experiments and documentation)
 
-**Course website:** https://asudeh.github.io/teaching/archive/cs594fall26
+## Project Description
 
-## Project: VectorDB + RAG for Pathology
+This project answers the question, can similar past pathology images help describe a new one? We use a Hugging Face dataset for this purpose, the link of which is provided right here: [PathVQA](https://huggingface.co/datasets/flaviagiammarino/path-vqa), this project uses [PLIP](https://huggingface.co/vinid/plip), which is a CLIP model trained on pathology data.
+The project stores the embeddings in a vector database (ChromaDB). Given a new image, it retrieves the most similar known images and their Q/A text, which can then be used to describe the new image (Retrieval-Augmented Generation).
 
-Pathology images contain rich visual information but often have limited descriptive metadata.
+## Datasets
 
-The goal of this programming project is to investigate whether existing image descriptions, combined with vector similarity search and retrieval-augmented generation (RAG), can provide useful descriptive information about pathology images.
+[PathVQA](https://huggingface.co/datasets/flaviagiammarino/path-vqa)
 
-Students will develop a system that integrates vector embeddings, vector database retrieval, and RAG to explore this question.
+## System Architecture
 
-## Suggested Resources
+_To be added._
 
-**Dataset: PathVQA**
+## Implementation Details
 
-- 4,998 pathology images
-- 32,799 question-answer pairs
-- Derived from pathology textbooks and the Pathology Education Informational Resource (PEIR)
+_To be added._
 
-Dataset: https://huggingface.co/datasets/flaviagiammarino/path-vqa
+## Installation and Execution
 
-**Embedding model: PLIP**
+### Setup
 
-Pathology Language-Image Pretraining (PLIP) is a candidate model for generating pathology image embeddings.
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-Repository: https://github.com/pathologyfoundation/plip
+### Usage
 
-These resources are recommended starting points. The implementation design and evaluation methodology should be documented by each team.
+```bash
+# Phase 2: download PathVQA and save a sample image to sample_output/
+python explore_data.py
 
-## Project Documentation
+# Phase 3: generate PLIP image + text embeddings into embeddings/
+python generate_embeddings.py              # first 2000 training samples
+python generate_embeddings.py --limit 500  # fewer samples, faster
+```
 
-Each team should update this README with:
+The first run downloads the dataset and the PLIP model (~600 MB).
 
-- Team members and responsibilities
-- System architecture and implementation choices
-- Installation instructions and dependencies
-- Instructions for running the system
-- Evaluation methodology and experimental results
-- Known limitations
+## Evaluation
 
-## Academic Integrity and LLM Usage
+_To be added._
 
-All submitted work must be original.
+## AI Usage
 
-Students must explicitly document how they used LLMs. LLMs may be used to understand concepts, locate and understand papers, and assist with syntax-level issues. LLM-generated algorithm designs and vibe coding are not permitted.
+See [AI_USAGE.md](AI_USAGE.md).
 
-Refer to the course syllabus and slides for the complete academic integrity and late-submission policies.
+## Video Demo
+
+_To be added._
